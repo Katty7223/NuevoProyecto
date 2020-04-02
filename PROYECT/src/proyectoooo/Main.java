@@ -73,9 +73,8 @@ public class Main {
 				  break;
 			  
 			  case 3:
-				  miLista.imprimirLista();
-				  System.out.println("¿Desea volver al menú principal?  1.Si  2.No");
-				   opcion=entrada.nextInt();
+				  miLista.Grafo();
+				  miLista.desdeJava();
 				  break;
 			  
 			  case 4:

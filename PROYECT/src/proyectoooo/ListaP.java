@@ -1,5 +1,9 @@
 package proyectoooo;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.InputStreamReader;
 import java.util.Scanner;
 
 public class ListaP {
@@ -68,7 +72,7 @@ public class ListaP {
 				System.out.println("| Hora de Entrada: " + nodoTmp.info.horaEnt);
 				System.out.println("| Placa: " + nodoTmp.info.placa);
 				System.out.println("| DPI: " + nodoTmp.info.dpi);
-				System.out.println("| edad: " + nodoTmp.info.modelo);
+				System.out.println("| Modelo: " + nodoTmp.info.modelo);
 				System.out.println("---------------------------------");
 				System.out.println("Ingrese la hora de salida del cliente");
 				int horaSal= entrada.nextInt();
@@ -99,7 +103,7 @@ public class ListaP {
 		NodoP nodoTmp = inicio;
 		int contador = 0;
 		boolean encontrado = false;
-		while (nodoTmp.siguiente != null) {
+		while (nodoTmp.siguiente != null ) {
 			
 
 			if (nodoTmp.info.nombre.contains(nombreNew) || nodoTmp.info.placa.contains(placaNew) ) {
@@ -110,7 +114,11 @@ public class ListaP {
 
 			nodoTmp = nodoTmp.siguiente;
 			contador++;
+		
+			
 		}
+		
+		
 
 		if (!encontrado) {
 			System.out.println("No encontrado");
@@ -169,6 +177,71 @@ public void eliminarCliente(String placaNew) {
 	}
   }
 
+public void Grafo(){
 	
+	try{
+		NodoP nodoTmp = inicio;
+		tamanio=0;
+		
+		
+		
+		BufferedWriter escritura = new BufferedWriter(new FileWriter("C:\\Users\\Usuario\\git\\repositoryOther\\PROYECT\\src\\proyectoooo\\grafo.gv"));
+		
+		escritura.write("digraph G {\n");
+		escritura.write("  rankdir=LR;\n");
+		escritura.write("  node [shape=Mrecord,style=filled,fillcolor=gray];\n");
 
+		String lineaGraph= "  ";
+		lineaGraph = lineaGraph + "\""  + "Nombre: " +  nodoTmp.info.nombre +  "\n" + "Nit: " +  nodoTmp.info.nit +  "\n" + "Fecha de Nacimiento: " +  nodoTmp.info.fechaN +  "\n"  + "Teléfono: " +  nodoTmp.info.tel +   "\n" + "Hora de entrada: " +  nodoTmp.info.horaEnt +  "\n" + "Placa: " +  nodoTmp.info.placa +  "\n" + "DPI: " +  nodoTmp.info.dpi + "\n" + "Modelo: " +  nodoTmp.info.modelo +  "\" -> ";
+		
+		
+		while(nodoTmp.siguiente!=null){
+			nodoTmp = nodoTmp.siguiente;
+			
+			if((tamanio==0) || (tamanio%2)==0) {
+				escritura.write("  node [shape=Mrecord];\n");
+                lineaGraph= lineaGraph + "\"" + "Nombre: " +  nodoTmp.info.nombre +  "\n" + "Nit: " +  nodoTmp.info.nit +  "\n" + "Fecha de Nacimiento: " +  nodoTmp.info.fechaN +  "\n"  + "Teléfono: " +  nodoTmp.info.tel +  "\n" + "Hora de entrada: " +  nodoTmp.info.horaEnt + "\n" + "Placa: " +  nodoTmp.info.placa + "\n" + "DPI: " +  nodoTmp.info.dpi + "\n" + "Modelo: " +  nodoTmp.info.modelo +  "\" -> ";
+			  
+		}else {
+			escritura.write("  node [shape=Mrecord,style=filled,fillcolor=gray];\n");
+            lineaGraph= lineaGraph + "\"" + "Nombre: " +  nodoTmp.info.nombre +  "\n" + "Nit: " +  nodoTmp.info.nit +  "\n" + "Fecha de Nacimiento: " +  nodoTmp.info.fechaN +  "\n"  + "Teléfono: " +  nodoTmp.info.tel +  "\n" + "Hora de entrada: " +  nodoTmp.info.horaEnt + "\n" + "Placa: " + nodoTmp.info.placa + "\n" + "DPI: " + nodoTmp.info.dpi + "\n" + "Modelo: " + nodoTmp.info.modelo +  "\" -> ";
+
+			
+		}
+			tamanio++;
+	}
+		
+        lineaGraph = lineaGraph + "\"null \";\n";
+        escritura.write(lineaGraph);
+		escritura.write("}\n");
+		escritura.close();
+		System.out.println("Ya escribio lo solicitado en el archivo: C:\\Users\\Usuario\\git\\repositoryOther\\PROYECT\\src\\proyectoooo\\grafo.gv");
+		
+	
+	}catch(Exception e){
+		e.printStackTrace();
+	}
+	
+}
+	public void desdeJava() {
+		try {
+			
+			        ProcessBuilder builder = new ProcessBuilder("cmd.exe", "/c", "cd \"C:\\Users\\Usuario\\git\\repositoryOther\\PROYECT\\src\\proyectoooo\\grafo.gv");
+			        builder.redirectErrorStream(true);
+			        Process p = builder.start();
+			        BufferedReader r = new BufferedReader(new InputStreamReader(p.getInputStream()));
+			        String line;
+			        while (true) {
+			            line = r.readLine();
+			            if (line == null) { break; }
+			            System.out.println(line);
+			        }
+			    
+			
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+
+   }
 }

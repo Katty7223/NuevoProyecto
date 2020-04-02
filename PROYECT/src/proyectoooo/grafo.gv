@@ -1,0 +1,12 @@
+digraph G {
+  rankdir=LR;
+  node [shape=Mrecord,style=filled,fillcolor=gray];
+  "Nombre: Katty
+Nit: 1800722-8
+Fecha de Nacimiento: 2002
+Teléfono: 54716171
+Hora de entrada: 7
+Placa: 123
+DPI: 301654654
+Modelo: 2010" -> "null ";
+}
