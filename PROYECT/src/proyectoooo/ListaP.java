@@ -225,7 +225,7 @@ public void Grafo(){
 }
 	public void desdeJava() {
 		try {
-			
+			        //Código para que se ejecute el grafo desde java, pero no funcionó ya que dice que el directorio es inválido
 			        ProcessBuilder builder = new ProcessBuilder("cmd.exe", "/c", "cd \"C:\\Users\\Usuario\\git\\repositoryOther\\PROYECT\\src\\proyectoooo\\grafo.gv");
 			        builder.redirectErrorStream(true);
 			        Process p = builder.start();

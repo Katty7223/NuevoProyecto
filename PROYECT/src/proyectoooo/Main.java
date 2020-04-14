@@ -30,9 +30,11 @@ public class Main {
               System.out.println("Ingrese el NIT");
               String nit=entrada.next();
               System.out.println("Ingrese la fecha de nacimiento");
+              //Para la fecha de nacimiento, unicamente se ingresa el año en el nació: 1981 o 1950 etc
               int fechaN=entrada.nextInt();
               System.out.println("Ingrese el Teléfono");
               String tel=entrada.next();
+              //El formato de hora se maneja de 6 a 12 para la mañana y de 13 a 24 para la tarde y noche
               System.out.println("Ingrese la hora de entrada del cliente");
               int horaEnt=entrada.nextInt();
               System.out.println("Ingrese la placa");
